@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #dddddd;
+  }
+}
+
+@layer components {
+  .type, .ability {
+    @apply bg-yellow-500 py-[2px] px-2
+  }
+
+  .type:nth-of-type(2), .ability:nth-of-type(4) {
+    @apply bg-red-500
+  }
+
+  .type:nth-of-type(3), .ability:nth-of-type(2) {
+    @apply bg-sky-500
+  }
+
+  .type:nth-of-type(4), .ability:nth-of-type(3) {
+    @apply bg-purple-500
+  }
+
+  .type:nth-of-type(5), .ability:nth-of-type(1) {
+    @apply bg-pink-500
+  }
+}
