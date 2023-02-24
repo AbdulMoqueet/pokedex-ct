@@ -17,7 +17,7 @@ const PopularSection = () => {
     <div className="py-8 pb-16 px-4">
       <div className="container">
         <h1 className="py-4 text-2xl">Popular Pokemons</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-[400px] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-[400px] md:w-[100%] mx-auto">
           {popularPokemons.map((p) => (
             <Card
               key={p.name}
