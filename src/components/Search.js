@@ -6,11 +6,14 @@ import { useRecoilState } from "recoil";
 
 import Pokedex from "pokedex-promise-v2";
 import Card from "./Card";
+import { loadingState } from "@/atoms/LoadingAtom";
 
 const Search = () => {
   const pokedex = new Pokedex();
 
   const [isPopupOpen, setIsPopupOpen] = useRecoilState(searchState);
+  const [isLoading, setIsLoading] = useRecoilState(loadingState);
+
   const searchInput = useRef(null);
 
   const [allPokemonList, setAllPokemonList] = useState([]);
@@ -42,6 +45,8 @@ const Search = () => {
       return;
     }
 
+    setIsLoading(true);
+
     const matchedPokemon = allPokemonList.filter((p) =>
       p.toLowerCase().includes(target)
     );
@@ -53,7 +58,10 @@ const Search = () => {
         .then((res) => {
           setSearchedPokemons(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
   };
 
